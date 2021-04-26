@@ -1,21 +1,46 @@
 import React from 'react';
-import { useHistory } from 'react-router';
-import { logUserOut } from '../apollo';
-import routes from '../routes';
+import { useQuery, gql } from '@apollo/client';
+import Photo from '../components/feed/Photo';
+import { seeFeed } from '../__generated__/seeFeed';
+import PageTitle from '../components/PageTitle';
+
+const FEED_QUERY = gql`
+  query seeFeed {
+    seeFeed {
+      id
+      user {
+        username
+        avatar
+      }
+      file
+      caption
+      likes
+      comments {
+        id
+        user {
+          username
+          avatar
+        }
+        payload
+        isMine
+        createdAt
+      }
+      commentNumber
+      createdAt
+      isMine
+      isLiked
+    }
+  }
+`;
 
 const Home = () => {
-  const history = useHistory();
+  const { data } = useQuery<seeFeed>(FEED_QUERY);
   return (
     <div>
-      <h1>Home</h1>
-      <button
-        onClick={() => {
-          logUserOut();
-          history.replace(routes.home);
-        }}
-      >
-        Log out now!
-      </button>
+      <PageTitle title="Home" />
+      {data?.seeFeed?.map((photo) =>
+        photo ? <Photo key={photo?.id} {...photo} /> : null
+      )}
     </div>
   );
 };

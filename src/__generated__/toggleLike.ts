@@ -4,21 +4,19 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: login
+// GraphQL mutation operation: toggleLike
 // ====================================================
 
-export interface login_login {
-  __typename: "LoginResult";
+export interface toggleLike_toggleLike {
+  __typename: "MutationResponse";
   ok: boolean;
   error: string | null;
-  token: string | null;
 }
 
-export interface login {
-  login: login_login;
+export interface toggleLike {
+  toggleLike: toggleLike_toggleLike;
 }
 
-export interface loginVariables {
-  username: string;
-  password: string;
+export interface toggleLikeVariables {
+  id: number;
 }
