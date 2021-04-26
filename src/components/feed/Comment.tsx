@@ -89,7 +89,9 @@ const Comment: React.FC<ICommentProps> = ({
   };
   return (
     <CommentContainer>
-      <FatText>{author}</FatText>
+      <Link to={`/users/${author}`}>
+        <FatText>{author}</FatText>
+      </Link>
       <CommentPayload>
         {payload.split(/[ ]/).map((word, index) =>
           /#[\w]+/.test(word) ? (

@@ -18,6 +18,7 @@ import {
   toggleLikeVariables,
 } from '../../__generated__/toggleLike';
 import Comments from './Comments';
+import { Link } from 'react-router-dom';
 
 export const TOGGLE_LIKE_MUTATION = gql`
   mutation toggleLike($id: Int!) {
@@ -115,8 +116,12 @@ const Photo: React.FC<seeFeed_seeFeed | null> = ({
   return (
     <PhotoContainer>
       <PhotoHeader>
-        <Avatar url={avatar || ''} lg />
-        <Username>{username}</Username>
+        <Link to={`/users/${username}`}>
+          <Avatar url={avatar || ''} lg />
+        </Link>
+        <Link to={`/users/${username}`}>
+          <Username>{username}</Username>
+        </Link>
       </PhotoHeader>
       <PhotoFile src={file} />
       <PhotoData>

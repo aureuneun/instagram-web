@@ -4,7 +4,6 @@
 - [x] Authentication
 - [x] Architecture
 - [x] Styles
-- [ ] Log In / Sign Up
-- [ ] Feed
-- [ ] Profile
-- [ ] See Hashtag
+- [x] Log In / Sign Up
+- [x] Feed
+- [x] Profile
